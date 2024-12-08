@@ -154,4 +154,4 @@ const deleteClass = async (req, res) => {
   }
 };
 
-export { getClasses, insertClass, updateClass, deleteClass };
+export { getClasses, insertClass, deleteClass };
