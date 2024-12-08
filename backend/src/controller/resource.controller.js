@@ -65,35 +65,35 @@ const insertResource = async (req, res) => {
     }
 };
 
-// const updateResource = async (req, res) => {
-//     try {
-//         const updatedResource = await Resource.findByIdAndUpdate(req.params.id, req.body, {
-//             new: true,
-//             runValidators: true
-//         })
-//         res.status(200).json(updatedResource)
-//     } catch (error) {
-//         res.status(400).json({
-//             success: false,
-//             message: error.message
-//         })
-//     }
-// }
+const updateResource = async (req, res) => {
+    try {
+        const updatedResource = await Resource.findByIdAndUpdate(req.params.id, req.body, {
+            new: true,
+            runValidators: true
+        })
+        res.status(200).json(updatedResource)
+    } catch (error) {
+        res.status(400).json({
+            success: false,
+            message: error.message
+        })
+    }
+}
 
-// const deleteResource = async (req, res) => {
-//     try {
-//         const lesson = await Lesson.findById(req.body.lessonId);
-//         lesson.reference = lesson.reference.filter(resource => resource.toString() !== req.params.id);
-//         await lesson.save();
-//         const deletedResource = await Resource.findByIdAndDelete(req.params.id)
-//         console.log("in delete", req.params.id,req.body.lessonId);
-//         res.status(200).json(deletedResource)
-//     } catch (error) {
-//         res.status(400).json({
-//             success: false,
-//             message: error.message
-//         })
-//     }
-// }
+const deleteResource = async (req, res) => {
+    try {
+        const lesson = await Lesson.findById(req.body.lessonId);
+        lesson.reference = lesson.reference.filter(resource => resource.toString() !== req.params.id);
+        await lesson.save();
+        const deletedResource = await Resource.findByIdAndDelete(req.params.id)
+        console.log("in delete", req.params.id,req.body.lessonId);
+        res.status(200).json(deletedResource)
+    } catch (error) {
+        res.status(400).json({
+            success: false,
+            message: error.message
+        })
+    }
+}
 
 export { getResources, insertResource, deleteResource};
